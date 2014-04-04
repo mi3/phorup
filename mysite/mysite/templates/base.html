@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Django Photo organizer</title>
+    <link type="text/css" rel="stylesheet" href="/static/django_blog.css">
+  </head>
+  <body>
+    <div id="header">
+      <ul id="control-bar">
+      {% if user.is_authenticated %}
+        <h1>My Phorup :-) </h1>
+        <li>
+        <a href="{% url "admin:index" %}">My admin page</a>
+        <a href="{% url "admin:photologue_photo_add" %}">Add Photo</a>
+        <a  href="{% url "admin:photologue_gallery_add" %}">Add Photo</a>
+        </li>
+        <li><a href="{% url "logout" %}">logout</a></li>
+      {% else %}
+        <li>
+            <a href="{% url "login" %}">login</a> 
+        </li>
+      {% endif %}
+      </ul>
+    </div>
+    <div id="container">
+      <div id="content">
+      {% block content %}
+        <HR>
+          Thanks for registering and activating an account with Myblog!
+        <HR>          
+      {% endblock %}
+      </div>
+    </div>
+  </body>
+</html>
